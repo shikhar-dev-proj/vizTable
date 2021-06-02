@@ -1,0 +1,45 @@
+:host .table-container ::ng-deep {
+    table {
+        width: 100%;
+    }
+    .content-row {
+        .table-row-comp {
+            border-bottom: 1px solid rgba(214, 219, 219, 0.4);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            .row-cell {
+                display: inline-block;
+                padding-top: 18px;
+                padding-bottom: 18px;
+            }
+        }
+        .padLeft {
+            padding-left: 8px;
+        }
+    }
+    .headerRow {
+        .table-row-comp {
+            margin-top: 35px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(214, 219, 219, 0.4);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            .header-cell {
+                cursor: pointer;
+                display: inline-block;
+                text-transform: uppercase;
+                font-size: 13px;
+                .headerName {
+                    display: block;
+                    font-weight: bold;
+                    padding: 0.5rem;
+                }
+                .headerValue {
+                    display: block;
+                    font-weight: bold;
+                    padding: 0.5rem;
+                }
+            }
+        }
+    }
+}

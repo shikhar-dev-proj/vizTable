@@ -1,0 +1,24 @@
+.table-container-comp {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.table-header-comp {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.table-row-comp {
+  overflow: visible;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.table-content-comp {
+  overflow-x: hidden;
+  overflow-y: auto;
+  white-space: nowrap;
+}

@@ -1,0 +1,8 @@
+<section class="table-container-comp">
+  <section class="table-header-comp">
+    <ng-content select="table-header"></ng-content>
+  </section>
+  <section class="table-content-comp" (scroll)="onScroll($event)">
+    <ng-content select="table-content"></ng-content>
+  </section>
+</section>

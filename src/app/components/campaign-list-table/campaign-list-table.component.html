@@ -1,0 +1,27 @@
+<ng-container *ngIf="campaignList?.length">
+  <div class="table-container">
+    <table>
+      <table-header>
+        <table-row class="headerRow">
+          <div *ngFor="let h of headerData; let i=index" 
+            class="header-cell">
+            <div class="headerName">{{h.name}}</div>
+            <div *ngIf="h.name !== 'Campaign Name'" class="headerValue">{{totalCampaignValues[h.name]}}</div>
+              
+          </div>
+        </table-row>
+      </table-header>
+      <table-content>
+          <table-row class="content-row" *ngFor="let campaign of campaignList">
+            <div class="row-cell">{{campaign.name}}</div>
+            <div class="row-cell">
+              {{campaign.aj_app_and_installs.total}}
+            </div>
+            <div class="row-cell">
+              {{campaign.aj_coh_0w_and_real_acquisition.total}}
+            </div>
+          </table-row>
+      </table-content>
+    </table>
+  </div>
+</ng-container>
