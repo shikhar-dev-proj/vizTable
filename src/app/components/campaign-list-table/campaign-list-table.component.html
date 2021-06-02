@@ -7,7 +7,6 @@
             class="header-cell">
             <div class="headerName">{{h.name}}</div>
             <div *ngIf="h.name !== 'Campaign Name'" class="headerValue">{{totalCampaignValues[h.name]}}</div>
-              
           </div>
         </table-row>
       </table-header>
@@ -15,10 +14,24 @@
           <table-row class="content-row" *ngFor="let campaign of campaignList">
             <div class="row-cell">{{campaign.name}}</div>
             <div class="row-cell">
-              {{campaign.aj_app_and_installs.total}}
+              <div class="rowCount">{{campaign.aj_app_and_installs.total}}</div>
+              <div class="rowTrend">
+                <campaign-trend-chart 
+                  [trendName]="'aj_app_and_installs'" 
+                  [trend]="campaign.aj_app_and_installs.trend"
+                  [view]="[250,100]"
+                  ></campaign-trend-chart>
+              </div>
             </div>
             <div class="row-cell">
-              {{campaign.aj_coh_0w_and_real_acquisition.total}}
+              <div class="rowCount">{{campaign.aj_coh_0w_and_real_acquisition.total}}</div>
+              <div class="rowTrend">
+                <campaign-trend-chart 
+                  [trendName]="'aj_coh_0w_and_real_acquisition'" 
+                  [trend]="campaign.aj_coh_0w_and_real_acquisition.trend"
+                  [view]="[250,100]"
+                  ></campaign-trend-chart>
+              </div>
             </div>
           </table-row>
       </table-content>

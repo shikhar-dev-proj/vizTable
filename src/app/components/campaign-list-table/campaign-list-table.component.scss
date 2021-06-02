@@ -11,6 +11,14 @@
                 display: inline-block;
                 padding-top: 18px;
                 padding-bottom: 18px;
+                .rowCount {
+                    display: block;
+                    padding: 0.5rem;
+                }
+                .rowTrend {
+                    display: block;
+                    padding: 0.5rem;
+                }
             }
         }
         .padLeft {

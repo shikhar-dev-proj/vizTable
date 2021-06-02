@@ -8,6 +8,10 @@ import { HttpService } from './shared/services/http.service';
 import { CampaignService } from './services/campaign.service';
 import { TableComponent, TableContentComponent, TableHeaderComponent, TableRowComponent } from './shared/components/table';
 import { CampaignListTable } from './components/campaign-list-table/campaign-list-table.component';
+import { LineChartComponent } from './shared/components/line-chart/line-chart.component';
+import { CampaignTrendChart } from './components/campaign-trend-chart/campaign-trend-chart.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,15 @@ import { CampaignListTable } from './components/campaign-list-table/campaign-lis
     TableHeaderComponent,
     TableContentComponent,
     TableRowComponent,
-    TableContentComponent
+    TableContentComponent,
+    LineChartComponent,
+    CampaignTrendChart
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     HttpService,

@@ -1,0 +1,11 @@
+<ng-container *ngIf="seriesData?.length">
+  <ngx-charts-area-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [legend]="false"
+    [xAxis]="false"
+    [yAxis]="false"
+    [animations]="false"
+    [results]="seriesData">
+  </ngx-charts-area-chart>
+</ng-container>
