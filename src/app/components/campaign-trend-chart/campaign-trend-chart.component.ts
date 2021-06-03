@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from "@angular/core";
 import { SeriesData } from "src/app/shared/types/seriesData";
 import { Campaign, MetricType, TemporalMetric } from "src/app/types/campaign";
 
@@ -6,8 +6,9 @@ import { Campaign, MetricType, TemporalMetric } from "src/app/types/campaign";
   selector: 'campaign-trend-chart',
   templateUrl: './campaign-trend-chart.component.html',
   styleUrls: ['./campaign-trend-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CampaignTrendChart implements OnInit {
+export class CampaignTrendChart implements OnChanges {
 
   @Input() trendName: MetricType;
   @Input() view: [number, number];
@@ -18,7 +19,7 @@ export class CampaignTrendChart implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnChanges() {
     this.colorScheme = {
       domain: [this.trendName === MetricType.aj_app_and_installs ? '#0ff1ce' : '#fb4934']
     };

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from "@angular/core";
 import { CAMPAIGN_TABLE_HEADERS } from "src/app/app.constants";
 import { TableConfig } from "src/app/shared/components/table/table.component";
 import { Campaign, MetricType } from "src/app/types/campaign";
@@ -9,7 +9,7 @@ import { Campaign, MetricType } from "src/app/types/campaign";
   styleUrls: ['./campaign-list-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CampaignListTable implements OnInit {
+export class CampaignListTable implements OnChanges {
 
   @Input() campaignList: Campaign[];
 
@@ -20,11 +20,9 @@ export class CampaignListTable implements OnInit {
   }
   tableConfig: TableConfig;
 
-
-
   constructor() {}
 
-  ngOnInit() {
+  ngOnChanges() {
     // this.campaignList = this.campaignList.slice(0, 10);
     // once campaign list is received, calculate total trend metrics
     this.totalCampaignValues = {
