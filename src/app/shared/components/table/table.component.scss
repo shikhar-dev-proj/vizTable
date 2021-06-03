@@ -4,21 +4,53 @@
   overflow-y: hidden;
   position: relative;
   width: 100%;
-}
-
-.table-header-comp {
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.table-row-comp {
-  overflow: visible;
-  white-space: nowrap;
-  width: 100%;
-}
-
-.table-content-comp {
-  overflow-x: hidden;
-  overflow-y: auto;
-  white-space: nowrap;
+  border: 1px solid black;
+  border-radius: 10px;
+  .table-header-comp {
+    overflow: hidden;
+    white-space: nowrap;
+    .headerRow {
+      display: grid;
+      width: 100%;
+      grid-template-columns: 1fr 1fr 1fr;
+      background-color: rgb(118, 194, 218);
+      .headerColumn {
+        display: block;
+        text-align: center;
+        padding: 0.5rem;
+        .headerTitle {
+          display: block;
+          text-transform: capitalize;
+          font-weight: bold;
+          padding: 0.2rem;
+        }
+        .headerMeta {
+          display: block;
+          font-weight: bold;
+          color: rgb(176, 40, 218);
+          padding: 0.2rem;
+        }
+        .headerToggle {
+          display: block;
+          font-size: 18px;
+          color: blue;
+          cursor: pointer;
+          padding: 0.2rem;
+        } 
+      }
+    }
+  }
+  .table-content-comp {
+    overflow-x: hidden;
+    overflow-y: auto;
+    white-space: nowrap;
+    .list-container {
+      height: 60rem;
+      width: 100%;
+      .itemRow {
+        height: 10rem;
+        width: 100%;
+      }
+    }
+  }
 }

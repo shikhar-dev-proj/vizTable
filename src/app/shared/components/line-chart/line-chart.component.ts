@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { SeriesData } from '../../types/seriesData';
 
 @Component({
   selector: 'line-chart',
   styleUrls: ['./line-chart.component.scss'],
-  templateUrl: './line-chart.component.html'
+  templateUrl: './line-chart.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LineChartComponent {
 

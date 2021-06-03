@@ -6,12 +6,13 @@ import { HttpClientModule } from '@angular/common/http'
 import { CampaignListingComponent } from './containers/campaign-listing/campaign-listing.component';
 import { HttpService } from './shared/services/http.service';
 import { CampaignService } from './services/campaign.service';
-import { TableComponent, TableContentComponent, TableHeaderComponent, TableRowComponent } from './shared/components/table';
 import { CampaignListTable } from './components/campaign-list-table/campaign-list-table.component';
 import { LineChartComponent } from './shared/components/line-chart/line-chart.component';
 import { CampaignTrendChart } from './components/campaign-trend-chart/campaign-trend-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScrollDispatcher, ScrollingModule } from '@angular/cdk/scrolling';
+import { TableComponent } from './shared/components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CampaignListingComponent,
     CampaignListTable,
     TableComponent,
-    TableHeaderComponent,
-    TableContentComponent,
-    TableRowComponent,
-    TableContentComponent,
     LineChartComponent,
     CampaignTrendChart
   ],
@@ -30,11 +27,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     HttpClientModule,
     NgxChartsModule,
-    BrowserAnimationsModule
+    ScrollingModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     HttpService,
-    CampaignService
+    CampaignService,
+    ScrollDispatcher
   ],
   bootstrap: [AppComponent]
 })

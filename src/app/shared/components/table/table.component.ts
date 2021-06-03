@@ -1,11 +1,26 @@
-import { AfterViewChecked, Component, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+
+export interface TableConfig {
+  tableHeaders: Array<{ name: string, property: string, metadata?: string, allowToggle: boolean }>;
+  enableVirtualScroll: boolean;
+  itemSize: number;
+}
 
 @Component({
   selector: 'table',
   styleUrls: ['./table.component.scss'],
-  templateUrl: './table.component.html'
+  templateUrl: './table.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableComponent implements AfterViewChecked {
+export class TableComponent implements OnInit {
+
+  @Input() tableConfig: TableConfig;
+  @Input() data: any[];
+  @Input() row: TemplateRef<any>;
+  // @Output() updateToggleState = new EventEmitter<{}>();
+
+  public toggleState = {};
+
   public tableEle: HTMLElement;
   public headerEle: HTMLElement;
   public contentEle: HTMLElement;
@@ -13,17 +28,14 @@ export class TableComponent implements AfterViewChecked {
   constructor(public eleRef: ElementRef) {}
 
 
-  public ngAfterViewChecked() {
-    this.tableEle = this.eleRef.nativeElement.getElementsByClassName(
-      'table-container-comp'
-    )[0];
-    this.headerEle = this.eleRef.nativeElement.getElementsByClassName(
-      'table-header-comp'
-    )[0];
-    this.contentEle = this.eleRef.nativeElement.getElementsByClassName(
-      'table-content-comp'
-    )[0];
-
+  ngOnInit() {
   }
 
+  toggle(columnProp: string, value: boolean) {
+    this.toggleState = {
+      ...this.toggleState,
+      [columnProp]: value
+    };
+    // this.updateToggleState.emit(this.toggleState);
+  }
 }

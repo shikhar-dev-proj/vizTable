@@ -1,40 +1,72 @@
-<ng-container *ngIf="campaignList?.length">
+<ng-container *ngIf="campaignList?.length && tableConfig?.tableHeaders?.length">
   <div class="table-container">
-    <table>
-      <table-header>
+    <ng-template #rowTemplate let-campaign="data" let-toggleState="toggleState">
+      <div class="content-row">
+        <div class="row-cell">{{campaign.name}}</div>
+        <div class="row-cell">
+          <div class="rowCount">{{campaign.aj_app_and_installs.total}}</div>
+          <div *ngIf="toggleState?.aj_app_and_installs" class="rowTrend">
+            <campaign-trend-chart 
+              [trendName]="'aj_app_and_installs'" 
+              [trend]="campaign.aj_app_and_installs.trend"
+              [view]="[250,100]"
+              ></campaign-trend-chart>
+          </div>
+        </div>
+        <div class="row-cell">
+          <div class="rowCount">{{campaign.aj_coh_0w_and_real_acquisition.total}}</div>
+          <div *ngIf="toggleState?.aj_coh_0w_and_real_acquisition" class="rowTrend">
+            <campaign-trend-chart 
+              [trendName]="'aj_coh_0w_and_real_acquisition'" 
+              [trend]="campaign.aj_coh_0w_and_real_acquisition.trend"
+              [view]="[250,100]"
+              ></campaign-trend-chart>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <table
+      [tableConfig]="tableConfig"
+      [data]="campaignList"
+      [row]="rowTemplate"
+    >
+      <!-- <table-header>
         <table-row class="headerRow">
-          <div *ngFor="let h of headerData; let i=index" 
-            class="header-cell">
+          <div *ngFor="let h of headerData; let i=index" class="header-cell">
             <div class="headerName">{{h.name}}</div>
             <div *ngIf="h.name !== 'Campaign Name'" class="headerValue">{{totalCampaignValues[h.name]}}</div>
           </div>
         </table-row>
       </table-header>
       <table-content>
-          <table-row class="content-row" *ngFor="let campaign of campaignList">
-            <div class="row-cell">{{campaign.name}}</div>
-            <div class="row-cell">
-              <div class="rowCount">{{campaign.aj_app_and_installs.total}}</div>
-              <div class="rowTrend">
-                <campaign-trend-chart 
-                  [trendName]="'aj_app_and_installs'" 
-                  [trend]="campaign.aj_app_and_installs.trend"
-                  [view]="[250,100]"
-                  ></campaign-trend-chart>
+        <cdk-virtual-scroll-viewport class="list-container" itemSize="60">
+          <div *cdkVirtualFor="let campaign of campaignList; let i=index" class="itemRow">
+            <table-row class="content-row">
+              <div class="row-cell">{{campaign.name}}</div>
+              <div class="row-cell">
+                <div class="rowCount">{{campaign.aj_app_and_installs.total}}</div>
+                <div class="rowTrend">
+                  <campaign-trend-chart 
+                    [trendName]="'aj_app_and_installs'" 
+                    [trend]="campaign.aj_app_and_installs.trend"
+                    [view]="[250,100]"
+                    ></campaign-trend-chart>
+                </div>
               </div>
-            </div>
-            <div class="row-cell">
-              <div class="rowCount">{{campaign.aj_coh_0w_and_real_acquisition.total}}</div>
-              <div class="rowTrend">
-                <campaign-trend-chart 
-                  [trendName]="'aj_coh_0w_and_real_acquisition'" 
-                  [trend]="campaign.aj_coh_0w_and_real_acquisition.trend"
-                  [view]="[250,100]"
-                  ></campaign-trend-chart>
+              <div class="row-cell">
+                <div class="rowCount">{{campaign.aj_coh_0w_and_real_acquisition.total}}</div>
+                <div class="rowTrend">
+                  <campaign-trend-chart 
+                    [trendName]="'aj_coh_0w_and_real_acquisition'" 
+                    [trend]="campaign.aj_coh_0w_and_real_acquisition.trend"
+                    [view]="[250,100]"
+                    ></campaign-trend-chart>
+                </div>
               </div>
-            </div>
-          </table-row>
-      </table-content>
+            </table-row>
+          </div>
+       </cdk-virtual-scroll-viewport>
+      </table-content> -->
     </table>
   </div>
 </ng-container>
