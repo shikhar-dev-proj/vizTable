@@ -13,6 +13,7 @@ export class CampaignTrendChart implements OnChanges {
   @Input() trendName: MetricType;
   @Input() view: [number, number];
   @Input() trend: TemporalMetric[];
+  @Input() yScaleMax: number;
 
   public seriesData: SeriesData[];
   public colorScheme;

@@ -20,7 +20,7 @@
       
       <cdk-virtual-scroll-viewport class="list-container" itemSize="60" autosize>
         <div *cdkVirtualFor="let d of data" class="itemRow">
-          <ng-container *ngTemplateOutlet="row; context: { data: d, toggleState: this.toggleState }"></ng-container>
+          <ng-container *ngTemplateOutlet="row; context: { data: d, toggleState: this.toggleState, contentWidth: this.contentEleWidth }"></ng-container>
         </div>
       </cdk-virtual-scroll-viewport>
     </ng-container>

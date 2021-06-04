@@ -1,6 +1,6 @@
 <ng-container *ngIf="campaignList?.length && tableConfig?.tableHeaders?.length">
   <div class="table-container">
-    <ng-template #rowTemplate let-campaign="data" let-toggleState="toggleState">
+    <ng-template #rowTemplate let-campaign="data" let-toggleState="toggleState" let-width="contentWidth">
       <div class="content-row">
         <div class="row-cell">{{campaign.name}}</div>
         <div class="row-cell">
@@ -9,7 +9,7 @@
             <campaign-trend-chart 
               [trendName]="'aj_app_and_installs'" 
               [trend]="campaign.aj_app_and_installs.trend"
-              [view]="[250,100]"
+              [view]="[width/3,100]"
               ></campaign-trend-chart>
           </div>
         </div>
@@ -19,7 +19,7 @@
             <campaign-trend-chart 
               [trendName]="'aj_coh_0w_and_real_acquisition'" 
               [trend]="campaign.aj_coh_0w_and_real_acquisition.trend"
-              [view]="[250,100]"
+              [view]="[width/3,100]"
               ></campaign-trend-chart>
           </div>
         </div>

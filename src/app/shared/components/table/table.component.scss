@@ -5,7 +5,7 @@
   position: relative;
   width: 100%;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 5px;
   .table-header-comp {
     overflow: hidden;
     white-space: nowrap;
@@ -13,21 +13,23 @@
       display: grid;
       width: 100%;
       grid-template-columns: 1fr 1fr 1fr;
-      background-color: rgb(118, 194, 218);
+      background-color: #f0f8ff;
       .headerColumn {
         display: block;
         text-align: center;
         padding: 0.5rem;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         .headerTitle {
           display: block;
           text-transform: capitalize;
           font-weight: bold;
           padding: 0.2rem;
+          color: #0074ff;
         }
         .headerMeta {
           display: block;
-          font-weight: bold;
-          color: rgb(176, 40, 218);
+          // font-weight: bold;
+          color: #eb415d;
           padding: 0.2rem;
         }
         .headerToggle {
