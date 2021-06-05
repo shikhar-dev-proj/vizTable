@@ -1,9 +1,17 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, TemplateRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, TemplateRef } from '@angular/core';
 
 export interface TableConfig {
-  tableHeaders: Array<{ name: string, property: string, metadata?: string, allowToggle: boolean }>;
+  tableHeaders: Array<{
+    name: string,
+    property: string,
+    allowToggle: boolean,
+    sortable?: boolean,
+    metadata?: string,
+    displayValue?: (value: any) => string | number,
+    sortComparer?: (valueA: any, valueB: any) => number;
+  }>;
   enableVirtualScroll: boolean;
-  itemSize: number;
+  itemSize?: number;
 }
 
 @Component({
@@ -12,18 +20,23 @@ export interface TableConfig {
   templateUrl: './table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableComponent implements AfterViewInit {
+export class TableComponent implements OnInit, AfterViewInit {
 
   @Input() tableConfig: TableConfig;
   @Input() data: any[];
   @Input() row: TemplateRef<any>;
-  // @Output() updateToggleState = new EventEmitter<{}>();
 
+  public presentedData: any[];
   public toggleState = {};
+  public sortState: { prop: string, ascending: boolean };
 
   public contentEleWidth: number;
 
   constructor(public eleRef: ElementRef) {}
+
+  ngOnInit() {
+    this.presentedData = this.data;
+  }
 
 
   ngAfterViewInit() {
@@ -38,6 +51,21 @@ export class TableComponent implements AfterViewInit {
       ...this.toggleState,
       [columnProp]: value
     };
-    // this.updateToggleState.emit(this.toggleState);
+  }
+
+  sortData(headerName: string) {
+    const header = this.tableConfig.tableHeaders.find(h => h.name === headerName);
+    if (this.sortState && this.sortState.prop === headerName) {
+      this.sortState.ascending = !this.sortState.ascending;
+      this.presentedData = [...this.presentedData.reverse()];
+    } else {
+      this.sortState = {
+        prop: headerName,
+        ascending: true
+      };
+      this.presentedData = [ ...header.sortComparer ?
+        this.presentedData.sort(header.sortComparer)
+        : this.presentedData.sort()];
+    }
   }
 }

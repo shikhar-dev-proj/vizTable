@@ -1,28 +1,54 @@
-<section *ngIf="data?.length && tableConfig?.tableHeaders?.length" class="table-container-comp">
+<section *ngIf="presentedData?.length && tableConfig?.tableHeaders?.length" class="table-container-comp">
   <section class="table-header-comp">
     <!-- <ng-content select="table-header"></ng-content> -->
     <div class="headerRow">
       <div class="headerColumn" *ngFor="let header of tableConfig.tableHeaders">
-        <div *ngIf="header.name" class="headerTitle">{{header.name}}</div>
-        <div *ngIf="header.metadata" class="headerMeta">{{header.metadata}}</div>
-        <div *ngIf="header.allowToggle" 
-          class="headerToggle" 
-          [ngClass]="{ 'toggleOn': toggleState[header.name], 'toggleOff': !toggleState[header.name]}">
-          <span *ngIf="toggleState[header.name]" (click)="toggle(header.property, false)">-</span>
-          <span *ngIf="!toggleState[header.name]" (click)="toggle(header.property, true)">+</span>
+        <div>
+          <div *ngIf="header.name" class="headerTitle">{{header.name}}</div>
+          <div *ngIf="header.metadata" class="headerMeta">{{header.metadata}}</div>
+          <div *ngIf="header.allowToggle" 
+            class="headerToggle" 
+            [ngClass]="{ 'toggleOn': toggleState[header.name], 'toggleOff': !toggleState[header.name]}">
+            <span class="minus" *ngIf="toggleState[header.name]" (click)="toggle(header.property, false)">-</span>
+            <span class="plus" *ngIf="!toggleState[header.name]" (click)="toggle(header.property, true)">+</span>
+          </div>
         </div>
+        <div *ngIf="header.sortable">
+          <div *ngIf="sortState?.prop === header.name && sortState?.ascending" class="sortBtnActive" (click)="sortData(header.name)">A-Z</div>
+          <div *ngIf="sortState?.prop === header.name && !sortState?.ascending" class="sortBtnActive" (click)="sortData(header.name)">Z-A</div>
+          <div *ngIf="sortState?.prop !== header.name" class="sortBtnInActive" (click)="sortData(header.name)">A-Z</div>
+        </div>
+        
       </div>
     </div>
   </section>
   <section class="table-content-comp">
     <!-- <ng-content select="table-content"></ng-content> -->
     <ng-container *ngIf="!!tableConfig.enableVirtualScroll">
-      
       <cdk-virtual-scroll-viewport class="list-container" itemSize="60" autosize>
-        <div *cdkVirtualFor="let d of data" class="itemRow">
+        <div *cdkVirtualFor="let d of presentedData" class="itemRow">
           <ng-container *ngTemplateOutlet="row; context: { data: d, toggleState: this.toggleState, contentWidth: this.contentEleWidth }"></ng-container>
+          <ng-container *ngIf="!row">
+            <div class="default-row">
+              <ng-container *ngFor="let col of tableConfig.tableHeaders">
+                <div class="default-row-cell">{{col.displayValue ? col.displayValue(d) : d[col.property]}}</div>
+              </ng-container>
+            </div>
+          </ng-container>
         </div>
       </cdk-virtual-scroll-viewport>
+    </ng-container>
+    <ng-container *ngIf="!tableConfig.enableVirtualScroll">
+      <div *ngFor="let d of presentedData" class="itemRow">
+        <ng-container *ngTemplateOutlet="row; context: { data: d, toggleState: this.toggleState, contentWidth: this.contentEleWidth }"></ng-container>
+        <ng-container *ngIf="!row">
+          <div class="default-row">
+            <ng-container *ngFor="let col of tableConfig.tableHeaders">
+              <div class="default-row-cell">{{col.displayValue ? col.displayValue(d) : d[col.property]}}</div>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
     </ng-container>
     
   </section>

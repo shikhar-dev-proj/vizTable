@@ -15,7 +15,8 @@
       grid-template-columns: 1fr 1fr 1fr;
       background-color: #f0f8ff;
       .headerColumn {
-        display: block;
+        display: grid;
+        grid-template-columns: 1fr 2rem;
         text-align: center;
         padding: 0.5rem;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -39,6 +40,15 @@
           cursor: pointer;
           padding: 0.2rem;
         } 
+        .sortBtnActive {
+          color: #0074ff;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        .sortBtnInActive {
+          color: grey;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -49,9 +59,26 @@
     .list-container {
       height: 60rem;
       width: 100%;
-      .itemRow {
-        height: 10rem;
+      
+    }
+    .itemRow {
+      height: 10rem;
+      width: 100%;
+      .default-row {
+        height: 100%;
         width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 0.5rem;
+        border-bottom: 1px solid rgba(214, 219, 219, 0.4);
+        .default-row-cell {
+          text-align: center;
+          display: inline-block;
+          padding-top: 18px;
+          padding-bottom: 18px;
+          margin: auto;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
       }
     }
   }
