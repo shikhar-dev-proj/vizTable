@@ -85,5 +85,7 @@ This can be achieved by either organising the table based on page numbers or by 
 1. Table Component can support detailed row (collapsible behaviour), where some additional detail can be displayed on row click. In our case, the trend can be displayed as an inline table.
 2. Table Component can support column filters, based on user input over a specific column, only thoughs rows are displayed which match the criteria.
 3. Table Component can also support Grouping of Data or should be able to present the data in a heirarchial format if required.
+4. Storybook Integration which supports different usecases for the component.
+
 
 
