@@ -2,12 +2,18 @@
 
 ## Description
 Built a scalable and reusable Table component using Angular 8. The table is able to present upto 1000 rows of feature rich data, without any experience hiccup. Features supported include:
-- Virtual Scroll
-- Responsive Table Layout
-- Sorting based on column values
-- User Defined Row Templates
-- Default Rows based on Header Column and Data passed
-- Column Toggle to perform column based view updates
+- Virtual Scroll<br>
+Render 1000s of content rich rows without user XP glitches.
+- Responsive Table Layout<br>
+Contents of the user defined rows can be made responsive by utilising the content width passed as template context.
+- Sorting based on column values<br>
+Allows sorting of columns based on sortComparer methods in TableConfig.
+- User Defined Row Templates<br>
+Consumer of the component can customise the kind of rows they want for the table. 
+- Default Rows based on Header Column and Data passed<br>
+If customised template is not provided, a default one is ready for you.
+- Column Toggle to perform column based view updates<br>
+Column Header contains an optional button + or - which allows you to toggle column behaviour.
 
 ## Setup and Usage
 
@@ -76,8 +82,8 @@ This can be achieved by either organising the table based on page numbers or by 
 
 
 ## Scope for Improvement
-
-
-
+1. Table Component can support detailed row (collapsible behaviour), where some additional detail can be displayed on row click. In our case, the trend can be displayed as an inline table.
+2. Table Component can support column filters, based on user input over a specific column, only thoughs rows are displayed which match the criteria.
+3. Table Component can also support Grouping of Data or should be able to present the data in a heirarchial format if required.
 
 
