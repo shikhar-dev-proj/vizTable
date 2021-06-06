@@ -87,5 +87,10 @@ This can be achieved by either organising the table based on page numbers or by 
 3. Table Component can also support Grouping of Data or should be able to present the data in a heirarchial format if required.
 4. Storybook Integration which supports different usecases for the component.
 
+<img width="2048" alt="Screenshot 2021-06-06 at 7 08 18 PM" src="https://user-images.githubusercontent.com/36563196/120926489-b5412080-c6fa-11eb-80c7-2458bf539bc2.png">
+<img width="2048" alt="Screenshot 2021-06-06 at 7 07 57 PM" src="https://user-images.githubusercontent.com/36563196/120926495-bb370180-c6fa-11eb-96d9-10eb1a746f87.png">
+<img width="2048" alt="Screenshot 2021-06-06 at 7 07 47 PM" src="https://user-images.githubusercontent.com/36563196/120926496-bc682e80-c6fa-11eb-8c74-63aa8c5e5526.png">
+<img width="2048" alt="Screenshot 2021-06-06 at 7 07 39 PM" src="https://user-images.githubusercontent.com/36563196/120926497-be31f200-c6fa-11eb-9864-4882e48959c4.png">
+<img width="2048" alt="Screenshot 2021-06-06 at 7 07 27 PM" src="https://user-images.githubusercontent.com/36563196/120926502-c12ce280-c6fa-11eb-9914-b443123af2ad.png">
 
 
