@@ -65,7 +65,7 @@ export class TableComponent implements OnInit, AfterViewInit {
       };
       this.presentedData = [ ...header.sortComparer ?
         this.presentedData.sort(header.sortComparer)
-        : this.presentedData.sort()];
+        : this.presentedData.sort((a, b) => (a[header.property] - b[header.property]))];
     }
   }
 }
